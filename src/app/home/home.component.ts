@@ -25,4 +25,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  AddGrade(grade?: Grade) {
+    // this.grades.push(grade);
+  }
+
 }
