@@ -15,9 +15,7 @@ export class HomeComponent implements OnInit {
     new Grade("3c38913d-4b0f-4e4e-a731-a8611ed5ee18", 73, "C", ""),
     new Grade("6cf7be2b-45fd-49de-81b2-27cc0c6de34d", 90, "B", ""),
     new Grade("cb82fbe7-5069-4e3b-9024-aa616f8e47ae", 100, "A", "Great Job")
-  ]
-
-
+  ];
 
 
   constructor() { }
@@ -29,4 +27,10 @@ export class HomeComponent implements OnInit {
     // this.grades.push(grade);
   }
 
+  DeleteGrade(grade: Grade) {
+    const index = this.grades.indexOf(grade, 0);
+    if (index > -1) {
+      this.grades.splice(index, 1);
+    }
+  }
 }
