@@ -1,4 +1,4 @@
-export class Grade {
+export class GradeModel {
   constructor(
     public id: string,
     public minPercentage: number,
