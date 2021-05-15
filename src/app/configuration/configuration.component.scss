@@ -1,0 +1,47 @@
+.panel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  &__grade, &__props {
+    padding: 20px;
+  }
+
+  &__grade {
+    border-right: 1px solid #E0E0E0;
+    display: flex;
+    flex-direction: column;
+    div {
+      display: flex;
+      align-items: center;
+      button {
+        color: #757575;
+        opacity: .5;
+        transition: .3s;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__button {
+    align-self: center;
+    margin-top: 10px;
+    text-transform: uppercase;
+    color: #673ab7;
+  }
+  &__option {
+    transition: .5s;
+  }
+
+
+  &__blank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9e9e9e;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

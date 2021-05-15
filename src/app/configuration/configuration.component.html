@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="panel">
+    <div class="panel__grade">
+      <mat-selection-list #gradeList [multiple]="false" [(ngModel)]="selectedOption">
+        <mat-list-option class="panel__option" *ngFor="let grade of grades" [value]="grade" (click)="onSelect(grade)">
+          <div><b>{{grade.symbolicGrade}}</b>&nbsp;&nbsp;&nbsp;&nbsp;{{grade.minPercentage}}% - 100%
+            <div class="spacer"></div>
+            <button mat-icon-button aria-label="Delete grade" (click)="deleteGrade(grade)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-list-option>
+      </mat-selection-list>
+
+      <button mat-button class="panel__button" (click)="addGrade(); gradeList.deselectAll()">
+        <mat-icon>add</mat-icon> Add new grade
+      </button>
+    </div>
+
+    <div [class]="propsClass">
+      <app-properties *ngIf="selected else blank" [grade]="selectedGrade">
+      </app-properties>
+
+    </div>
+
+    <ng-template #blank>
+        <span>Select grade to show options</span>
+    </ng-template>
+
+  </div>
+</div>
+
