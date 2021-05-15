@@ -1,0 +1,18 @@
+.shadow {
+  box-shadow: 0 3px 5px 1px #ccc;
+}
+
+.container {
+  height: 100vh;
+}
+
+.sidenav {
+  &__option {
+    font-size: .8em;
+    text-align: center;
+  }
+
+}
+.center-vertically {
+  padding: 0;
+}

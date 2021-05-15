@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ModuleModel} from "./models/module.model";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'grading-system';
+  title = 'Grading system';
+
+  modules: ModuleModel[] = [
+    new ModuleModel('/home', 'home'),
+    new ModuleModel('/config', 'settings')
+  ];
 }
