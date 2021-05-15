@@ -1,0 +1,21 @@
+<mat-form-field appearance="standard">
+  <mat-label>Percent from</mat-label>
+  <input matInput placeholder="100" [(ngModel)]="grade.minPercentage">
+  <mat-icon matSuffix>%</mat-icon>
+</mat-form-field>
+
+<mat-form-field appearance="standard">
+  <mat-label>Percent to</mat-label>
+  <input matInput placeholder="100" [value]=100 disabled>
+  <mat-icon matSuffix>%</mat-icon>
+</mat-form-field>
+
+<mat-form-field appearance="standard">
+  <mat-label>GradeModel</mat-label>
+  <input matInput placeholder="100" [(ngModel)]="grade.symbolicGrade" >
+</mat-form-field>
+
+<mat-form-field appearance="standard">
+  <mat-label>GradeModel description</mat-label>
+  <input matInput placeholder="100" [(ngModel)]="grade.descriptiveGrade" >
+</mat-form-field>
