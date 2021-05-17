@@ -1,15 +1,12 @@
 <mat-sidenav-container class="container">
   <mat-sidenav class="sidenav" mode="side" opened>
     <mat-nav-list>
-      <mat-list-item *ngFor="let module of modules">
-        <a mat-line [routerLink]="module.link">
+      <mat-list-item [routerLink]="module.link" *ngFor="let module of modules">
           <mat-icon>{{module.icon}}</mat-icon>
-        </a>
-
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content class="content">
     <mat-toolbar color="white" class="shadow">
       <span>{{title}}</span>
     </mat-toolbar>
