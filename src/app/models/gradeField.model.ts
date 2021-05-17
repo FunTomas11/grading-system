@@ -4,7 +4,6 @@ export class GradeFieldModel {
   constructor(
     public grade: GradeModel,
     public maxPercentage: string,
-    public selected: boolean
   ) {
   }
 

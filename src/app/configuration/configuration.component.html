@@ -1,12 +1,12 @@
 <div class="container">
   <div class="panel">
     <div class="panel__grade">
-      <mat-selection-list #gradeList [multiple]="false" (selectionChange)="selChange()">
-        <mat-list-option class="panel__option" *ngFor="let grade of grades; index as i; first as isFirst" (click)="onSelect(grade)" [selected] = "lastSelected">
+      <mat-selection-list #gradeList [multiple]="false" (selectionChange)="selChange()" >
+        <mat-list-option class="panel__option" *ngFor="let grade of grades; index as i; first as isFirst; last as isLast" (click)="onSelect(grade, grades[i + 1].minPercentage)" [value]="grade">
           <div><b>{{grade.symbolicGrade}}</b>&nbsp;&nbsp;&nbsp;&nbsp;
-            {{grade.minPercentage}}% -
-            <div *ngIf="grades.length > i ">{{grades[i].minPercentage}}%</div>
-<!--            <div *ngIf="grade === grades[grades.length - 1]">100%</div>-->
+            {{grade.minPercentage}}% -&nbsp;
+            <div *ngIf="!isLast" >{{ grades[i + 1].minPercentage - 1}}%</div>
+            <div *ngIf="isLast">100%</div>
             <div class="spacer"></div>
             <button *ngIf="!isFirst" mat-icon-button aria-label="Delete grade" (click)="deleteGrade(grade)">
               <mat-icon>delete</mat-icon>
@@ -21,7 +21,7 @@
     </div>
 
     <div [class]="propsClass">
-      <app-properties *ngIf="selectedGrade else blank" [grade]="selectedGrade" (added)="changeState($event)">
+      <app-properties *ngIf="selectedGrade else blank" [grade]="selectedGrade" [maxValue]="maxValue" (added)="changeState($event)">
       </app-properties>
 
     </div>

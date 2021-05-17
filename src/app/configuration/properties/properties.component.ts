@@ -14,6 +14,7 @@ import {GradeCreatedModel} from "../../models/gradeCreated.model";
 export class PropertiesComponent implements OnInit, OnChanges {
 
   @Input() grade!: GradeModel;
+  @Input() maxValue: number = 100;
   @Output() added = new EventEmitter<boolean>();
   gradeForm = this.fb.group({});
 

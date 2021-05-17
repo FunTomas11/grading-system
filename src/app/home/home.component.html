@@ -1,8 +1,10 @@
 <mat-list>
-  <mat-list-item *ngFor="let grade of grades">
-    <span>
-      <b>{{grade.symbolicGrade}}</b>
-      {{grade.minPercentage}}% - 100%
-    </span>
+  <mat-list-item *ngFor="let grade of grades; index as i; last as isLast">
+    <div><b>{{grade.symbolicGrade}}</b>&nbsp;&nbsp;&nbsp;&nbsp;
+      {{grade.minPercentage}}% -&nbsp;
+      <div *ngIf="!isLast">{{grades[i + 1].minPercentage - 1}}%</div>
+      <div *ngIf="isLast">100%</div>
+      <div class="spacer"></div>
+    </div>
   </mat-list-item>
 </mat-list>

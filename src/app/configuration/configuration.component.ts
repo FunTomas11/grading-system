@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {GradeModel} from "../models/grade.model";
 import {GradesService} from "../services/grades.service";
+import {MatSelectionList} from "@angular/material/list";
 
 @Component({
   selector: 'app-configuration',
@@ -9,14 +10,16 @@ import {GradesService} from "../services/grades.service";
 })
 export class ConfigurationComponent implements OnInit {
 
-  grades: GradeModel[] = [];
 
+  @ViewChild('gradeList') list!: MatSelectionList;
+
+  grades: GradeModel[] = [];
   added: boolean = true;
-  lastSelected: boolean = false;
   selectedGrade: GradeModel | undefined;
 
   // ========== Styles ================
   propsClass: string = "panel__blank";
+  maxValue: number = 100;
 
   constructor(private service: GradesService) { }
   ngOnInit(): void {
@@ -25,6 +28,7 @@ export class ConfigurationComponent implements OnInit {
         return a.minPercentage - b.minPercentage;
       });
     });
+
   }
 
   addGrade() {
@@ -32,26 +36,33 @@ export class ConfigurationComponent implements OnInit {
       if (JSON.stringify(temp) !== JSON.stringify(this.grades[this.grades.length - 1]) ) {
         this.grades.push(temp);
         this.added = false;
+
+        this.selectLast();
       }
       this.selectedGrade = temp;
-      // this.selected = true;
-      this.lastSelected = true;
       this.propsClass = "panel__props";
+
   }
 
   deleteGrade(grade: GradeModel) {
-    // this.selected = false;
-    this.selectedGrade = undefined;
+    if (this.selectedGrade === grade) {
+      this.list.deselectAll();
+      this.selectedGrade = undefined;
+      this.propsClass = "panel__blank";
+
+    }
     const index = this.grades.indexOf(grade, 0);
     this.grades.splice(index, 1);
-    this.propsClass = "panel__blank";
-    this.service.deleteGrade(grade.id).subscribe();
+    if (this.added) this.service.deleteGrade(grade.id).subscribe();
+    // this.selectLast();
+
   }
 
-  onSelect(grade: GradeModel) {
-    // this.selected = true;
+  onSelect(grade: GradeModel, next: number) {
     this.selectedGrade = grade;
     this.propsClass = "panel__props";
+
+    this.maxValue = (next) ? next : 99;
   }
 
   changeState(event: boolean) {
@@ -59,11 +70,23 @@ export class ConfigurationComponent implements OnInit {
   }
 
   selChange() {
+    console.log(this.list);
     if (!this.added) {
       this.grades.pop();
       this.added = true;
-      this.lastSelected = false;
     }
   }
+
+  selectLast() {
+    let last = this.list.options.last;
+    this.list.options.changes.subscribe( data => {
+      this.list.deselectAll();
+      last = data.last;
+
+    });
+
+    this.list.selectedOptions.select(last);
+  }
+
 
 }
