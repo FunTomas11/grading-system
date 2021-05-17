@@ -47,13 +47,14 @@ export class PropertiesComponent implements OnInit, OnChanges {
         this.grade.descriptiveGrade = data.descriptiveGrade;
 
         this.added.emit(true);
+
       });
     }
   }
 
   ngOnChanges(): void {
     this.gradeForm = this.fb.group({
-      minPercentage: [(this.grade.id) ? this.grade.minPercentage : "", [Validators.pattern('^([1-9])?[0-9]$|^100$'), Validators.required]],
+      minPercentage: [(this.grade.id) ? this.grade.minPercentage : "", [Validators.pattern('^([1-9])?[0-9]$|^100$'), Validators.required, Validators.max(this.maxValue)]],
       symbolicGrade: [this.grade.symbolicGrade, Validators.required],
       descriptiveGrade: [this.grade.descriptiveGrade]
     });
