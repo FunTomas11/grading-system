@@ -12,28 +12,33 @@ import { PropertiesComponent } from './configuration/properties/properties.compo
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatInputModule} from "@angular/material/input";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSidenavModule} from "@angular/material/sidenav";
+import { HomeComponent } from './home/home.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     ConfigurationComponent,
-    PropertiesComponent
+    PropertiesComponent,
+    HomeComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatListModule,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatToolbarModule,
-    MatInputModule,
-    FormsModule,
-    MatSidenavModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatListModule,
+        MatButtonModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatToolbarModule,
+        MatInputModule,
+        FormsModule,
+        MatSidenavModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

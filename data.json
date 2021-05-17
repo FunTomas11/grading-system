@@ -1,0 +1,40 @@
+{
+  "grades": [
+    {
+      "minPercentage": "0",
+      "symbolicGrade": "F",
+      "descriptiveGrade": "",
+      "id": 1
+    },
+    {
+      "minPercentage": "100",
+      "symbolicGrade": "A",
+      "descriptiveGrade": "",
+      "id": 2
+    },
+    {
+      "minPercentage": "31",
+      "symbolicGrade": "E",
+      "descriptiveGrade": "",
+      "id": 3
+    },
+    {
+      "minPercentage": "50",
+      "symbolicGrade": "D",
+      "descriptiveGrade": "",
+      "id": 4
+    },
+    {
+      "minPercentage": "90",
+      "symbolicGrade": "B",
+      "descriptiveGrade": "",
+      "id": 5
+    },
+    {
+      "minPercentage": "73",
+      "symbolicGrade": "C",
+      "descriptiveGrade": "",
+      "id": 6
+    }
+  ]
+}
