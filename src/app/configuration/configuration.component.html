@@ -1,24 +1,27 @@
 <div class="container">
   <div class="panel">
     <div class="panel__grade">
-      <mat-selection-list #gradeList [multiple]="false" [(ngModel)]="selectedOption">
-        <mat-list-option class="panel__option" *ngFor="let grade of grades" [value]="grade" (click)="onSelect(grade)">
-          <div><b>{{grade.symbolicGrade}}</b>&nbsp;&nbsp;&nbsp;&nbsp;{{grade.minPercentage}}% - 100%
+      <mat-selection-list #gradeList [multiple]="false" (selectionChange)="selChange()">
+        <mat-list-option class="panel__option" *ngFor="let grade of grades; index as i; first as isFirst" (click)="onSelect(grade)" [selected] = "lastSelected">
+          <div><b>{{grade.symbolicGrade}}</b>&nbsp;&nbsp;&nbsp;&nbsp;
+            {{grade.minPercentage}}% -
+            <div *ngIf="grades.length > i ">{{grades[i].minPercentage}}%</div>
+<!--            <div *ngIf="grade === grades[grades.length - 1]">100%</div>-->
             <div class="spacer"></div>
-            <button mat-icon-button aria-label="Delete grade" (click)="deleteGrade(grade)">
+            <button *ngIf="!isFirst" mat-icon-button aria-label="Delete grade" (click)="deleteGrade(grade)">
               <mat-icon>delete</mat-icon>
             </button>
           </div>
         </mat-list-option>
       </mat-selection-list>
 
-      <button mat-button class="panel__button" (click)="addGrade(); gradeList.deselectAll()">
+      <button mat-button class="panel__button" (click)="addGrade()">
         <mat-icon>add</mat-icon> Add new grade
       </button>
     </div>
 
     <div [class]="propsClass">
-      <app-properties *ngIf="selected else blank" [grade]="selectedGrade">
+      <app-properties *ngIf="selectedGrade else blank" [grade]="selectedGrade" (added)="changeState($event)">
       </app-properties>
 
     </div>

@@ -1,21 +1,26 @@
-<mat-form-field appearance="standard">
-  <mat-label>Percent from</mat-label>
-  <input matInput placeholder="100" [(ngModel)]="grade.minPercentage">
-  <mat-icon matSuffix>%</mat-icon>
-</mat-form-field>
+<form [formGroup]="gradeForm">
 
-<mat-form-field appearance="standard">
-  <mat-label>Percent to</mat-label>
-  <input matInput placeholder="100" [value]=100 disabled>
-  <mat-icon matSuffix>%</mat-icon>
-</mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>Percent from</mat-label>
+    <input matInput placeholder="0 - 100" formControlName="minPercentage">
+    <mat-icon matSuffix>%</mat-icon>
+  </mat-form-field>
 
-<mat-form-field appearance="standard">
-  <mat-label>Grade</mat-label>
-  <input matInput placeholder="100" [(ngModel)]="grade.symbolicGrade" >
-</mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>Percent to</mat-label>
+    <input matInput placeholder="100" [value]="grade.minPercentage" disabled>
+    <mat-icon matSuffix>%</mat-icon>
+  </mat-form-field>
 
-<mat-form-field appearance="standard">
-  <mat-label>Grade description</mat-label>
-  <input matInput placeholder="100" [(ngModel)]="grade.descriptiveGrade" >
-</mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>Grade</mat-label>
+    <input matInput placeholder="A, Good" formControlName="symbolicGrade">
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Grade description</mat-label>
+    <input matInput placeholder="Example description" formControlName="descriptiveGrade">
+  </mat-form-field>
+
+  <button type="submit" mat-raised-button (click)="onSubmit()" [disabled]="!gradeForm.valid">Save</button>
+</form>
