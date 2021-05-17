@@ -4,6 +4,7 @@ import {GradesService} from "../../services/grades.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {GradeModifyModel} from "../../models/gradeModify.model";
 import {GradeCreatedModel} from "../../models/gradeCreated.model";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class PropertiesComponent implements OnInit, OnChanges {
   gradeForm = this.fb.group({});
 
 
-  constructor(private service: GradesService, private fb: FormBuilder) {
+  constructor(private service: GradesService, private fb: FormBuilder, private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -36,7 +37,11 @@ export class PropertiesComponent implements OnInit, OnChanges {
         this.grade.symbolicGrade = data.symbolicGrade;
         this.grade.minPercentage = data.minPercentage;
         this.grade.descriptiveGrade = data.descriptiveGrade;
-      });
+        this._snackBar.open("Something went wrong!", "", { duration: 2000});
+        },
+        () => {
+          this._snackBar.open("Something went wrong during updating!", "", { duration: 2000});
+        });
     }
     else {
       this.service.addGrade(new GradeCreatedModel(res.minPercentage, res.symbolicGrade, res.descriptiveGrade)
@@ -45,10 +50,12 @@ export class PropertiesComponent implements OnInit, OnChanges {
         this.grade.symbolicGrade = data.symbolicGrade;
         this.grade.minPercentage = data.minPercentage;
         this.grade.descriptiveGrade = data.descriptiveGrade;
-
+        this._snackBar.open("Added successfully!", "", { duration: 2000});
         this.added.emit(true);
-
-      });
+      },
+        () => {
+          this._snackBar.open("Something went wrong during adding!", "", { duration: 2000});
+        });
     }
   }
 

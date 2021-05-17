@@ -16,6 +16,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import { HomeComponent } from './home/home.component';
 import {HttpClientModule} from "@angular/common/http";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {HttpClientModule} from "@angular/common/http";
         FormsModule,
         MatSidenavModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatSnackBarModule
     ],
   providers: [],
   bootstrap: [AppComponent]
