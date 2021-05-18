@@ -1,3 +1,28 @@
-mat-form-field {
+form {
   display: flex;
+  flex-direction: column;
+  .row {
+    display: flex;
+    justify-content: space-between;
+    mat-form-field {
+      margin-right: 30px;
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
 }
+
+@media only screen and (max-width: 600px) {
+  form {
+    .row {
+      flex-direction: column;
+      mat-form-field {
+        margin: 0;
+
+      }
+    }
+  }
+}
+
+

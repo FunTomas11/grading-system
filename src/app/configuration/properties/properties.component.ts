@@ -37,7 +37,7 @@ export class PropertiesComponent implements OnInit, OnChanges {
         this.grade.symbolicGrade = data.symbolicGrade;
         this.grade.minPercentage = data.minPercentage;
         this.grade.descriptiveGrade = data.descriptiveGrade;
-        this._snackBar.open("Something went wrong!", "", { duration: 2000});
+        this._snackBar.open("Updated successfully", "", { duration: 2000});
         },
         () => {
           this._snackBar.open("Something went wrong during updating!", "", { duration: 2000});

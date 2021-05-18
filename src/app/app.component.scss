@@ -1,23 +1,25 @@
-.content
-{
-  text-align: center;
-}
-
-.shadow {
-  box-shadow: 0 3px 5px 1px #ccc;
-}
-
 .container {
   height: 100vh;
 }
 
-.sidenav {
-  &__option {
-    font-size: .8em;
-    text-align: center;
-  }
+.toolbar {
+  max-height: 60px;
+}
 
+.sidenav {
+  background-color: #673ab7;
+  &__item {
+    color: #ffffff;
+    padding: 6px 2px;
+    &_active {
+      color: #FFD740;
+      box-sizing: border-box;
+      border-left: 1px solid #FFD740;
+    }
+  }
 }
-.center-vertically {
-  padding: 0;
-}
+
+
+
+
+

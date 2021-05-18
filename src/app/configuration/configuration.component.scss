@@ -1,7 +1,6 @@
 .panel {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
   &__grade, &__props {
+    height: 100vh;
     padding: 20px;
   }
 
@@ -33,13 +32,6 @@
     transition: .5s;
   }
 
-
-  &__blank {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #9e9e9e;
-  }
 }
 
 .spacer {

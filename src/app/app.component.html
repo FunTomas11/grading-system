@@ -1,15 +1,13 @@
 <mat-sidenav-container class="container">
-  <mat-sidenav class="sidenav" mode="side" opened>
-    <mat-nav-list>
-      <mat-list-item [routerLink]="module.link" *ngFor="let module of modules">
+  <mat-sidenav class="sidenav" mode="side" opened >
+    <mat-nav-list class="sidenav__row">
+      <mat-list-item class="sidenav__item" [routerLink]="module.link" *ngFor="let module of modules" routerLinkActive="sidenav__item_active">
           <mat-icon>{{module.icon}}</mat-icon>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content class="content">
-    <mat-toolbar color="white" class="shadow">
-      <span>{{title}}</span>
-    </mat-toolbar>
+  <mat-sidenav-content class="content" >
+
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
