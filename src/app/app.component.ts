@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ModuleModel} from "./models/module.model";
 
 @Component({
@@ -10,7 +10,9 @@ export class AppComponent {
   title = 'Grading system';
 
   modules: ModuleModel[] = [
-    new ModuleModel('/home', 'home'),
-    new ModuleModel('/config', 'settings')
+    new ModuleModel('#', 'person', 'User'),
+    new ModuleModel('/home', 'home', 'Home'),
+    new ModuleModel('/config', 'settings', 'Configuration')
   ];
+
 }
