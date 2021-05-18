@@ -1,11 +1,13 @@
+<mat-toolbar color="white" class="toolbar">
+  <span>Grading system</span>
+</mat-toolbar>
+
 <mat-list>
   <mat-list-item *ngFor="let grade of grades; index as i; last as isLast">
-    <div><b>{{grade.symbolicGrade}}</b>&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>{{grade.symbolicGrade}}</b>&nbsp;&nbsp;&nbsp;&nbsp;
       {{grade.minPercentage}}% -&nbsp;
       <span *ngIf="!isLast">{{grades[i + 1].minPercentage - 1}}%</span>
-      <span *ngIf="isLast">100%</span>
-      &nbsp;
+      <span *ngIf="isLast">100%</span> &nbsp;
       <span>{{grade.descriptiveGrade}}</span>
-    </div>
   </mat-list-item>
 </mat-list>
